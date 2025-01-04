@@ -59,7 +59,7 @@ th_hm.innerHTML = headerObj.thHm;//th_hm szövegének megadása a rowobjectum tu
 h_row.appendChild(th_hm);//th_hm elem hozzáadása a h_row-hoz
 
 const th_szf = document.createElement("th");//th_szf elem létrehozása
-th_szf.innerHTML = th_szf_value;//th_szf szövegének megadása a rowobjectum tulajdonságával
+th_szf.innerHTML = headerObj.thSzf;//th_szf szövegének megadása a rowobjectum tulajdonságával
 h_row.appendChild(th_szf);//th_szf elem hozzáadása a h_row-hoz
 
 const th_hr = document.createElement("th");//th_hr elem létrehozása
