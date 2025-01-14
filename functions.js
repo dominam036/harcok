@@ -92,3 +92,33 @@ function RenderTable(){ // a RenderTable függvény létrehozása
 }
 
 RenderTable() //a RenderTable függvény meghívása
+
+const form = document.getElementById('form') // form elem létrehozása
+
+form.addEventListener('submit', function(e){ //a form submit eseménykezelő létrehozása
+    e.preventDefault() // alapvető mód meggátolása
+    const harc_nev = document.getElementById('harc_nev') //a harc_nev lekérése
+    const harcolo1 = document.getElementById('harcolo1') //a harcolo1 lekérése
+    const hadero1 = document.getElementById('hadero1') //hadero1 lekérése
+    const harcolo2 = document.getElementById('harcolo2') //a harcolo2 lekérése
+    const hadero2 = document.getElementById('hadero2') //hadero2 lekérése
+
+    const harc_nev_value = harc_nev.value //a harc_nev értékét kiveszem egy harc_nev változóba
+    const harcolo1_value = harcolo1.value //a harcolo1 értékét kiveszem egy harcolo1 változóba
+    const hadero1_value = hadero1.value //a hadero1 értékét kiveszem egy hadero1_value változóba
+    const harcolo2_value = harcolo2.value //a harcolo2 értékét kiveszem egy harcolo2_value változóba
+    const hadero2_value = hadero2.value //a hadero2 értékét kiveszem egy hadero2_value változóba
+
+    const ujElem =  {  //egy uj objektumot hozok létre
+        tdHm:  harc_nev_value, //az objektum tdHm értéke a harc_nev_value
+        tdSzf: harcolo1_value, //az objektum tdSzf értéke a harcolo1_value
+        tdHr:  hadero1_value, //az objektum tdHr értéke a hadero1_value
+        tdSzf2: harcolo2_value, //az objektum tdSzf2 értéke a harcolo2_value
+        tdHr2: hadero2_value //az objektum tdHr2 értéke a hadero2_value
+    }
+
+    array.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
+    table.innerHTML = "" //a table törlése
+
+    RenderTable() //meghivom a RenderTable függvényt
+})
