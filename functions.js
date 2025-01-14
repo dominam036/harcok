@@ -1,14 +1,13 @@
-
 const array = [
-    { // array tomb nulladik elemenek letrehozasa
-        thHm: 'Harc megnevezése', // array tomb nulladik elem thHm tulajdonsaganak ertekadas
-        thSzf: "Szembenálló felek", // // array tomb nulladik elem thSzf tulajdonsaganak ertekadas
-        thHr: "Haderő", // // array tomb nulladik elem thHr tulajdonsaganak ertekadas
+    { //array tomb nulladik elemenek letrehozasa
+        thHm: "Harc megnevezése", // array tomb nulladik elem thHm tulajdonsaganak ertekadas
+        thSzf: "Szembenálló felek", // array tomb nulladik elem thSzf tulajdonsaganak ertekadas
+        thHr: "Haderő" // array tomb nulladik elem thHr tulajdonsaganak ertekadas
     },
     { // array tomb elso elemenek letrehozasa
         tdHm: 'Rákóczi szabadságharc', // array tomb elso elem tdHm tulajdonsaganak ertekadas
-        tdSzf: "Kuruc", // // array tomb elso elem tdSzf tulajdonsaganak ertekadas
-        tdHr: "70.000", // // array tomb elso elem tdHr tulajdonsaganak ertekadas
+        tdSzf: "Kuruc", // array tomb elso elem tdSzf tulajdonsaganak ertekadas
+        tdHr: "70.000", // array tomb elso elem tdHr tulajdonsaganak ertekadas
     },
     { // array tomb masodik elemenek letrehozasa
         tdSzf : 'Labanc', // array tomb masodik elem tdSzf tulajdonsaganak ertekadas
@@ -63,98 +62,35 @@ h_row.appendChild(th_hr);//th_hr elem hozzáadása a h_row-hoz
 const tbody = document.createElement("tbody");//tbody elem létrehozása
 table.appendChild(tbody);//tbody elem hozzáadása a table-hoz
 
-const t_row = document.createElement("tr");//t_row elem létrehozása
-tbody.appendChild(t_row);//t_row elem hozzáadása a tbody-hoz
+for (let i = 0; i < array.length; i++) { //for ciklus, ami végig megy a array-on
+    const tbody = document.createElement('tbody') // létrehozzuk a tbody taget 
+    table.appendChild(tbody) // a table-hez hozzáadjuk a tbodyt
+    const elem = array[i]; // kivesszük egy változóba a tömb aktuális elemét
+    const tr = document.createElement('tr') //létrehozunk egy sort
+    const tr2 = document.createElement('tr') //létrehozzuk a második sort
+    tbody.appendChild(tr) //hozzáadjuk a tbodyhoz az első sort
+    tbody.appendChild(tr2) //hozzáadjuk a tbodyhoz a második sort
 
-const t_row2 = document.createElement("tr");//t_row2 elem létrehozása
-tbody.appendChild(t_row2);//t_row2 elem hozzáadása a tbody-hoz
+    const tdHm = document.createElement('td') //lértehozunk egy tdHm elemet
+    tdHm.innerHTML = elem.harc //beállitjuk a cella szövegét az aktuális elemnek
+    tdHm.rowSpan = 2 //beállitjuk a tdHm cella rowspanjét 2-re
+    tr.appendChild(tdHm) //hozzáadjuk a tdHm cellát az első sorhoz(tr)
 
-const t_row3 = document.createElement("tr");//t_row3 elem létrehozása
-tbody.appendChild(t_row3);//t_row3 elem hozzáadása a tbody-hoz
+    const tdSzf = document.createElement('td') //lértehozunk egy tdSzf elemet
+    tdSzf.innerHTML = elem.fel  //beállitjuk a cella szövegét az aktuális elemnek
+    tr.appendChild(tdSzf) //hozzáadjuk a tdSzf cellát az első sorhoz(tr)
 
-const t_row4 = document.createElement("tr");//t_row4 elem létrehozása
-tbody.appendChild(t_row4);//t_row4 elem hozzáadása a tbody-hoz
+    const tdhr = document.createElement('td') //lértehozunk egy tdhr elemet
+    tdhr.innerHTML = elem.hadero  //beállitjuk a cella szövegét az aktuális elemnek
+    tr.appendChild(tdhr) //hozzáadjuk a tdhr cellát az első sorhoz(tr)
 
-const t_row5 = document.createElement("tr");//t_row5 elem létrehozása
-tbody.appendChild(t_row5);//t_row5 elem hozzáadása a tbody-hoz
+    const tdSzf2 = document.createElement('td') //lértehozunk egy tdSzf2 elemet
+    tdSzf2.innerHTML = elem.fel2  //beállitjuk a cella szövegét az aktuális elemnek
+    tr2.appendChild(tdSzf2) //hozzáadjuk a tdSzf2 cellát az első sorhoz(tr2)
 
-const t_row6 = document.createElement("tr");//t_row6 elem létrehozása
-tbody.appendChild(t_row6);//t_row6 elem hozzáadása a tbody-hoz
+    const tdhr2 = document.createElement('td') //lértehozunk egy tdhr2 elemet
+    tdhr2.innerHTML = elem.hadero2  //beállitjuk a cella szövegét az aktuális elemnek
+    tr2.appendChild(tdhr2) //hozzáadjuk a tdhr2 cellát az első sorhoz(tr2)
 
-const t_row7 = document.createElement("tr");//t_row7 elem létrehozása
-tbody.appendChild(t_row7);//t_row7 elem hozzáadása a tbody-hoz
 
-const td_szf = document.createElement("td");//td_szf elem létrehozása
-td_szf.rowSpan = 2;//td_szf rowspanjának 2-re állítása
-td_szf.innerHTML =array[1].tdSzf;//td_szf szövegének megadása a rowobjectum tulajdonságával
-t_row.appendChild(td_szf);//td_szf elem hozzáadása a t_row-hoz
-
-const td_hm = document.createElement("td");//td_hm elem létrehozása
-td_hm.innerHTML = array[1].tdHm;//td_hm szövegének megadása a rowobjectum tulajdonságával
-t_row.appendChild(td_hm);//td_hm elem hozzáadása a t_row-hoz
-
-const td_hr = document.createElement("td");//td_hr elem létrehozása
-td_hr.innerHTML = array[1].tdHr;//td_hr szövegének megadása a rowobjectum tulajdonságával
-t_row.appendChild(td_hr);//td_hr elem hozzáadása a t_row-hoz
-
-const td_szf2 = document.createElement("td");//td_szf2 elem létrehozása
-td_szf2.innerHTML = array[2].tdSzf;//td_szf2 szövegének megadása a rowobjectum tulajdonságával
-t_row2.appendChild(td_szf2);//td_szf2 elem hozzáadása a t_row2-hoz
-
-const td_hr2 = document.createElement("td");//td_hr2 elem létrehozása
-td_hr2.innerHTML = array[2].tdHr;//td_hr2 szövegének megadása a rowobjectum tulajdonságával
-t_row2.appendChild(td_hr2);//td_hr2 elem hozzáadása a t_row2-hoz
-
-const td_szf3 = document.createElement("td");//td_szf3 elem létrehozása
-td_szf3.rowSpan = 2;//td_szf3 rowspanjának 2-re állítása
-td_szf3.innerHTML = array[3].tdSzf;//td_szf3 szövegének megadása a rowobjectum tulajdonságával
-t_row3.appendChild(td_szf3);//td_szf3 elem hozzáadása a t_row3-hoz
-
-const td_hm3 = document.createElement("td");//td_hm3 elem létrehozása
-td_hm3.innerHTML = array[3].tdHm;//td_hm3 szövegének megadása a rowobjectum tulajdonságával
-t_row3.appendChild(td_hm3);//td_hm3 elem hozzáadása a t_row3-hoz
-
-const td_hr3 = document.createElement("td");//td_hr3 elem létrehozása
-td_hr3.innerHTML = array[3].tdHr;//td_hr3 szövegének megadása a rowobjectum tulajdonságával
-t_row3.appendChild(td_hr3);//td_hr3 elem hozzáadása a t_row3-hoz
-
-const td_szf4 = document.createElement("td");//td_szf4 elem létrehozása
-td_szf4.innerHTML = array[4].tdSzf;//td_szf4 szövegének megadása a rowobjectum tulajdonságával
-t_row4.appendChild(td_szf4);//td_szf4 elem hozzáadása a t_row4-hoz
-
-const td_hr4 = document.createElement("td");//td_hr4 elem létrehozása
-td_hr4.innerHTML = array[4].tdHr;//td_hr4 szövegének megadása a rowobjectum tulajdonságával
-t_row4.appendChild(td_hr4);//td_hr4 elem hozzáadása a t_row4-hoz
-
-const td_szf5 = document.createElement("td");//td_szf5 elem létrehozása
-td_szf5.rowSpan = 2;//td_szf5 rowspanjának 2-re állítása
-td_szf5.innerHTML = array[5].tdSzf;//td_szf5 szövegének megadása a rowobjectum tulajdonságával
-t_row5.appendChild(td_szf5);//td_szf5 elem hozzáadása a t_row5-hoz
-
-const td_hm5 = document.createElement("td");//td_hm5 elem létrehozása
-td_hm5.innerHTML = array[5].tdHm;//td_hm5 szövegének megadása a rowobjectum tulajdonságával
-t_row5.appendChild(td_hm5);//td_hm5 elem hozzáadása a t_row5-hoz
-
-const td_hr5 = document.createElement("td");//td_hr5 elem létrehozása
-td_hr5.innerHTML = array[5].tdHr;//td_hr5 szövegének megadása a rowobjectum tulajdonságával
-t_row5.appendChild(td_hr5);//td_hr5 elem hozzáadása a t_row5-hoz
-
-const td_szf6 = document.createElement("td");//td_szf6 elem létrehozása
-td_szf6.innerHTML = array[6].tdSzf;//td_szf6 szövegének megadása a rowobjectum tulajdonságával
-t_row6.appendChild(td_szf6);//td_szf6 elem hozzáadása a t_row6-hoz
-
-const td_hr6 = document.createElement("td");//td_hr6 elem létrehozása
-td_hr6.innerHTML = array[6].tdHr;//td_hr6 szövegének megadása a rowobjectum tulajdonságával
-t_row6.appendChild(td_hr6);//td_hr6 elem hozzáadása a t_row6-hoz
-
-const td_szf7 = document.createElement("td");//td_szf7 elem létrehozása
-td_szf7.innerHTML = array[7].tdSzf;//td_szf7 szövegének megadása a rowobjectum tulajdonságával
-t_row7.appendChild(td_szf7);//td_szf7 elem hozzáadása a t_row7-hoz
-
-const td_hm7 = document.createElement("td");//td_hm7 elem létrehozása
-td_hm7.innerHTML = array[7].tdHm;//td_hm7 szövegének megadása a rowobjectum tulajdonságával
-t_row7.appendChild(td_hm7);//td_hm7 elem hozzáadása a t_row7-hoz
-
-const td_hr7 = document.createElement("td");//td_hr7 elem létrehozása
-td_hr7.innerHTML = array[7].tdHr;//td_hr7 szövegének megadása a rowobjectum tulajdonságával
-t_row7.appendChild(td_hr7);//td_hr7 elem hozzáadása a t_row7-hoz
+}
