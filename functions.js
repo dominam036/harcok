@@ -32,10 +32,10 @@ const array = [
     }
 ]
 
+const table = document.createElement("table");//table elem létrehozása
+document.body.appendChild(table);//table elem hozzáadása a document.body-hoz
+
 function RenderTable(){ // a RenderTable függvény létrehozása
-    const table = document.createElement("table");//table elem létrehozása
-    document.body.appendChild(table);//table elem hozzáadása a document.body-hoz
-    
     const thead = document.createElement("thead");//thead elem létrehozása
     table.appendChild(thead);//thead elem hozzáadása a table-hoz
     
