@@ -56,35 +56,40 @@ h_row.appendChild(th_hr);//th_hr elem hozzáadása a h_row-hoz
 const tbody = document.createElement("tbody");//tbody elem létrehozása
 table.appendChild(tbody);//tbody elem hozzáadása a table-hoz
 
-for (let i = 1; i < array.length; i++) { //for ciklus, ami végig megy a array-on
-    const tbody = document.createElement('tbody') // létrehozzuk a tbody taget 
-    table.appendChild(tbody) // a table-hez hozzáadjuk a tbodyt
-    const elem = array[i]; // kivesszük egy változóba a tömb aktuális elemét
-    const tr = document.createElement('tr') //létrehozunk egy sort
-    const tr2 = document.createElement('tr') //létrehozzuk a második sort
-    tbody.appendChild(tr) //hozzáadjuk a tbodyhoz az első sort
-    tbody.appendChild(tr2) //hozzáadjuk a tbodyhoz a második sort
 
-    const tdHm = document.createElement('td') //lértehozunk egy tdHm elemet
-    tdHm.innerHTML = elem.tdHm //beállitjuk a cella szövegét az aktuális elemnek
-    tdHm.rowSpan = 2 //beállitjuk a tdHm cella rowspanjét 2-re
-    tr.appendChild(tdHm) //hozzáadjuk a tdHm cellát az első sorhoz(tr)
-
-    const tdSzf = document.createElement('td') //lértehozunk egy tdSzf elemet
-    tdSzf.innerHTML = elem.tdSzf  //beállitjuk a cella szövegét az aktuális elemnek
-    tr.appendChild(tdSzf) //hozzáadjuk a tdSzf cellát az első sorhoz(tr)
-
-    const tdHr = document.createElement('td') //lértehozunk egy tdHr elemet
-    tdHr.innerHTML = elem.tdHr  //beállitjuk a cella szövegét az aktuális elemnek
-    tr.appendChild(tdHr) //hozzáadjuk a tdHr cellát az első sorhoz(tr)
-
-    if(elem.tdSzf2 || elem.tdHr2){ // Ebbe az elágazásba ellenőrizzük, hogy az elemnek van-e tdSzf2, és tdHr2 tulajdonsága
-        const tdSzf2 = document.createElement('td') //lértehozunk egy tdSzf2 elemet
-        tdSzf2.innerHTML = elem.tdSzf2  //beállitjuk a cella szövegét az aktuális elemnek
-        tr2.appendChild(tdSzf2) //hozzáadjuk a tdSzf2 cellát az első sorhoz(tr2)
-
-        const tdHr2 = document.createElement('td') //lértehozunk egy tdHr2 elemet
-        tdHr2.innerHTML = elem.tdHr2  //beállitjuk a cella szövegét az aktuális el
-        tr2.appendChild(tdHr2) //hozzáadjuk a tdHr2 cellát az első sorhoz(tr2)
+function RenderTable(){ // a RenderTable függvény létrehozása
+    for (let i = 1; i < array.length; i++) { //for ciklus, ami végig megy a array-on
+        const tbody = document.createElement('tbody') // létrehozzuk a tbody taget 
+        table.appendChild(tbody) // a table-hez hozzáadjuk a tbodyt
+        const elem = array[i]; // kivesszük egy változóba a tömb aktuális elemét
+        const tr = document.createElement('tr') //létrehozunk egy sort
+        const tr2 = document.createElement('tr') //létrehozzuk a második sort
+        tbody.appendChild(tr) //hozzáadjuk a tbodyhoz az első sort
+        tbody.appendChild(tr2) //hozzáadjuk a tbodyhoz a második sort
+    
+        const tdHm = document.createElement('td') //lértehozunk egy tdHm elemet
+        tdHm.innerHTML = elem.tdHm //beállitjuk a cella szövegét az aktuális elemnek
+        tdHm.rowSpan = 2 //beállitjuk a tdHm cella rowspanjét 2-re
+        tr.appendChild(tdHm) //hozzáadjuk a tdHm cellát az első sorhoz(tr)
+    
+        const tdSzf = document.createElement('td') //lértehozunk egy tdSzf elemet
+        tdSzf.innerHTML = elem.tdSzf  //beállitjuk a cella szövegét az aktuális elemnek
+        tr.appendChild(tdSzf) //hozzáadjuk a tdSzf cellát az első sorhoz(tr)
+    
+        const tdHr = document.createElement('td') //lértehozunk egy tdHr elemet
+        tdHr.innerHTML = elem.tdHr  //beállitjuk a cella szövegét az aktuális elemnek
+        tr.appendChild(tdHr) //hozzáadjuk a tdHr cellát az első sorhoz(tr)
+    
+        if(elem.tdSzf2 || elem.tdHr2){ // Ebbe az elágazásba ellenőrizzük, hogy az elemnek van-e tdSzf2, és tdHr2 tulajdonsága
+            const tdSzf2 = document.createElement('td') //lértehozunk egy tdSzf2 elemet
+            tdSzf2.innerHTML = elem.tdSzf2  //beállitjuk a cella szövegét az aktuális elemnek
+            tr2.appendChild(tdSzf2) //hozzáadjuk a tdSzf2 cellát az első sorhoz(tr2)
+    
+            const tdHr2 = document.createElement('td') //lértehozunk egy tdHr2 elemet
+            tdHr2.innerHTML = elem.tdHr2  //beállitjuk a cella szövegét az aktuális el
+            tr2.appendChild(tdHr2) //hozzáadjuk a tdHr2 cellát az első sorhoz(tr2)
+        }
     }
 }
+
+RenderTable() //a RenderTable függvény meghívása
