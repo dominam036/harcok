@@ -8,33 +8,27 @@ const array = [
         tdHm: 'Rákóczi szabadságharc', // array tomb elso elem tdHm tulajdonsaganak ertekadas
         tdSzf: "Kuruc", // array tomb elso elem tdSzf tulajdonsaganak ertekadas
         tdHr: "70.000", // array tomb elso elem tdHr tulajdonsaganak ertekadas
+        tdSzf2 : 'Labanc', // array tomb elso elem tdSzf2 tulajdonsaganak ertekadas
+        tdHr2: '60.000', // array tomb elso elem tdHr2 tulajdonsaganak ertekadas
     },
     { // array tomb masodik elemenek letrehozasa
-        tdSzf : 'Labanc', // array tomb masodik elem tdSzf tulajdonsaganak ertekadas
-        tdHr: '60.000', // array tomb masodik elem tdHr tulajdonsaganak ertekadas
+        tdHm: '48-as szabadságharc', // array tomb masodik elem tdHm tulajdonsaganak ertekadas
+        tdSzf : 'Osztrák császárság (+ Orosz birodalom)', // array tomb masodik elem tdSzf tulajdonsaganak ertekadas
+        tdHr: '170.000 (+ 200.000)', // array tomb masodik elem tdHr tulajdonsaganak ertekadas
+        tdSzf2 : 'Magyar királyság', // array tomb masodik elem tdSzf2 tulajdonsaganak ertekadas
+        tdHr2: '170.000', // array tomb masodik elem tdHr2 tulajdonsaganak ertekadas
     },
     { // array tomb harmadik elemenek letrehozasa
-        tdHm: '48-as szabadságharc', // array tomb harmadik elem tdHm tulajdonsaganak ertekadas
-        tdSzf : 'Osztrák császárság (+ Orosz birodalom)', // array tomb harmadik elem tdSzf tulajdonsaganak ertekadas
-        tdHr: '170.000 (+ 200.000)', // array tomb harmadik elem tdHr tulajdonsaganak ertekadas
+        tdHm: 'I. világháború', // array tomb harmadik elem tdHm tulajdonsaganak ertekadas
+        tdSzf : 'Antant', // array tomb harmadik elem tdSzf tulajdonsaganak ertekadas
+        tdHr: '43 millió', // array tomb harmadik elem tdHr tulajdonsaganak ertekadas
+        tdSzf2 : 'Központi hatalmak', // array tomb harmadik elem tdSzf2 tulajdonsaganak ertekadas
+        tdHr2: '25 millió', // array tomb harmadik elem tdHr2 tulajdonsaganak ertekadas
     },
     { // array tomb negyedik elemenek letrehozasa
-        tdSzf : 'Magyar királyság', // array tomb negyedik elem tdSzf tulajdonsaganak ertekadas
-        tdHr: '170.000', // array tomb negyedik elem tdHr tulajdonsaganak ertekadas
-    },
-    { // array tomb otodik elemenek letrehozasa
-        tdHm: 'I. világháború', // array tomb otodik elem tdHm tulajdonsaganak ertekadas
-        tdSzf : 'Antant', // array tomb otodik elem tdSzf tulajdonsaganak ertekadas
-        tdHr: '43 millió', // array tomb otodik elem tdHr tulajdonsaganak ertekadas
-    },
-    { // array tomb hatodik elemenek letrehozasa
-        tdSzf : 'Központi hatalmak', // array tomb hatodik elem tdSzf tulajdonsaganak ertekadas
-        tdHr: '25 millió', // array tomb hatodik elem tdHr tulajdonsaganak ertekadas
-    },
-    { // array tomb hetedik elemenek letrehozasa
-        tdHm: 'Bosworthi csata', // array tomb hetedik elem tdHm tulajdonsaganak ertekadas
-        tdSzf : 'Angolok (York + Lancester)', // array tomb hetedik elem tdSzf tulajdonsaganak ertekadas
-        tdHr: '15.000', // array tomb hetedik elem tdHr tulajdonsaganak ertekadas
+        tdHm: 'Bosworthi csata', // array tomb negyedik elem tdHm tulajdonsaganak ertekadas
+        tdSzf : 'Angolok (York + Lancester)', // array tomb negyedik elem tdSzf tulajdonsaganak ertekadas
+        tdHr: '15.000', // array tomb negyedik elem tdHr tulajdonsaganak ertekadas
     }
 ]
 
@@ -62,7 +56,7 @@ h_row.appendChild(th_hr);//th_hr elem hozzáadása a h_row-hoz
 const tbody = document.createElement("tbody");//tbody elem létrehozása
 table.appendChild(tbody);//tbody elem hozzáadása a table-hoz
 
-for (let i = 0; i < array.length; i++) { //for ciklus, ami végig megy a array-on
+for (let i = 1; i < array.length; i++) { //for ciklus, ami végig megy a array-on
     const tbody = document.createElement('tbody') // létrehozzuk a tbody taget 
     table.appendChild(tbody) // a table-hez hozzáadjuk a tbodyt
     const elem = array[i]; // kivesszük egy változóba a tömb aktuális elemét
@@ -72,25 +66,24 @@ for (let i = 0; i < array.length; i++) { //for ciklus, ami végig megy a array-o
     tbody.appendChild(tr2) //hozzáadjuk a tbodyhoz a második sort
 
     const tdHm = document.createElement('td') //lértehozunk egy tdHm elemet
-    tdHm.innerHTML = elem.harc //beállitjuk a cella szövegét az aktuális elemnek
+    tdHm.innerHTML = elem.tdHm //beállitjuk a cella szövegét az aktuális elemnek
     tdHm.rowSpan = 2 //beállitjuk a tdHm cella rowspanjét 2-re
     tr.appendChild(tdHm) //hozzáadjuk a tdHm cellát az első sorhoz(tr)
 
     const tdSzf = document.createElement('td') //lértehozunk egy tdSzf elemet
-    tdSzf.innerHTML = elem.fel  //beállitjuk a cella szövegét az aktuális elemnek
+    tdSzf.innerHTML = elem.tdSzf  //beállitjuk a cella szövegét az aktuális elemnek
     tr.appendChild(tdSzf) //hozzáadjuk a tdSzf cellát az első sorhoz(tr)
 
-    const tdhr = document.createElement('td') //lértehozunk egy tdhr elemet
-    tdhr.innerHTML = elem.hadero  //beállitjuk a cella szövegét az aktuális elemnek
-    tr.appendChild(tdhr) //hozzáadjuk a tdhr cellát az első sorhoz(tr)
+    const tdHr = document.createElement('td') //lértehozunk egy tdHr elemet
+    tdHr.innerHTML = elem.tdHr  //beállitjuk a cella szövegét az aktuális elemnek
+    tr.appendChild(tdHr) //hozzáadjuk a tdHr cellát az első sorhoz(tr)
 
     const tdSzf2 = document.createElement('td') //lértehozunk egy tdSzf2 elemet
-    tdSzf2.innerHTML = elem.fel2  //beállitjuk a cella szövegét az aktuális elemnek
+    tdSzf2.innerHTML = elem.tdSzf2  //beállitjuk a cella szövegét az aktuális elemnek
     tr2.appendChild(tdSzf2) //hozzáadjuk a tdSzf2 cellát az első sorhoz(tr2)
 
-    const tdhr2 = document.createElement('td') //lértehozunk egy tdhr2 elemet
-    tdhr2.innerHTML = elem.hadero2  //beállitjuk a cella szövegét az aktuális elemnek
-    tr2.appendChild(tdhr2) //hozzáadjuk a tdhr2 cellát az első sorhoz(tr2)
-
+    const tdHr2 = document.createElement('td') //lértehozunk egy tdHr2 elemet
+    tdHr2.innerHTML = elem.tdHr2  //beállitjuk a cella szövegét az aktuális elemnek
+    tr2.appendChild(tdHr2) //hozzáadjuk a tdHr2 cellát az első sorhoz(tr2)
 
 }
