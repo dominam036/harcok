@@ -32,32 +32,31 @@ const array = [
     }
 ]
 
-const table = document.createElement("table");//table elem létrehozása
-document.body.appendChild(table);//table elem hozzáadása a document.body-hoz
-
-const thead = document.createElement("thead");//thead elem létrehozása
-table.appendChild(thead);//thead elem hozzáadása a table-hoz
-
-const h_row = document.createElement("tr");//h_row elem létrehozása
-thead.appendChild(h_row);//h_row elem hozzáadása a thead-hoz
-
-const th_hm = document.createElement("th");//th_hm elem létrehozása
-th_hm.innerHTML = array[0].thHm;//th_hm szövegének megadása a rowobjectum tulajdonságával
-h_row.appendChild(th_hm);//th_hm elem hozzáadása a h_row-hoz
-
-const th_szf = document.createElement("th");//th_szf elem létrehozása
-th_szf.innerHTML = array[0].thSzf;//th_szf szövegének megadása a rowobjectum tulajdonságával
-h_row.appendChild(th_szf);//th_szf elem hozzáadása a h_row-hoz
-
-const th_hr = document.createElement("th");//th_hr elem létrehozása
-th_hr.innerHTML = array[0].thHr;//th_hr szövegének megadása a rowobjectum tulajdonságával
-h_row.appendChild(th_hr);//th_hr elem hozzáadása a h_row-hoz
-
-const tbody = document.createElement("tbody");//tbody elem létrehozása
-table.appendChild(tbody);//tbody elem hozzáadása a table-hoz
-
-
 function RenderTable(){ // a RenderTable függvény létrehozása
+    const table = document.createElement("table");//table elem létrehozása
+    document.body.appendChild(table);//table elem hozzáadása a document.body-hoz
+    
+    const thead = document.createElement("thead");//thead elem létrehozása
+    table.appendChild(thead);//thead elem hozzáadása a table-hoz
+    
+    const h_row = document.createElement("tr");//h_row elem létrehozása
+    thead.appendChild(h_row);//h_row elem hozzáadása a thead-hoz
+    
+    const th_hm = document.createElement("th");//th_hm elem létrehozása
+    th_hm.innerHTML = array[0].thHm;//th_hm szövegének megadása a rowobjectum tulajdonságával
+    h_row.appendChild(th_hm);//th_hm elem hozzáadása a h_row-hoz
+    
+    const th_szf = document.createElement("th");//th_szf elem létrehozása
+    th_szf.innerHTML = array[0].thSzf;//th_szf szövegének megadása a rowobjectum tulajdonságával
+    h_row.appendChild(th_szf);//th_szf elem hozzáadása a h_row-hoz
+    
+    const th_hr = document.createElement("th");//th_hr elem létrehozása
+    th_hr.innerHTML = array[0].thHr;//th_hr szövegének megadása a rowobjectum tulajdonságával
+    h_row.appendChild(th_hr);//th_hr elem hozzáadása a h_row-hoz
+    
+    const tbody = document.createElement("tbody");//tbody elem létrehozása
+    table.appendChild(tbody);//tbody elem hozzáadása a table-hoz
+
     for (let i = 1; i < array.length; i++) { //for ciklus, ami végig megy a array-on
         const tbody = document.createElement('tbody') // létrehozzuk a tbody taget 
         table.appendChild(tbody) // a table-hez hozzáadjuk a tbodyt
