@@ -32,6 +32,31 @@ const array = [
     }
 ]
 
+const formtomb = [ //a form tömbjének létrehozása
+    {
+        label: "Harc megnevezése: ", //az input label-ének(szövegének) megadása
+        id: "harc_nev" //id értékének megadása
+    },
+    {
+        label: "1. Harcoló fél: ", //az input label-ének(szövegének) megadása
+        id: "harcolo1" //id értékének megadása
+    },
+    {
+        label: "1. Haderő: ", //az input label-ének(szövegének) megadása
+        id: "hadero1" //id értékének megadása
+    },
+    {
+        label: "2. Harcoló fél: ", //az input label-ének(szövegének) megadása
+        id: "harcolo2" //id értékének megadása
+    },
+    {
+        label: "2. Haderő", //az input label-ének(szövegének) megadása
+        id: "hadero2" //id értékének megadása
+    }
+]
+
+formGeneralas() //a formGeneralas függvény meghívása
+
 function fejlecGeneralas(){
     const thead = document.createElement('thead') //thead elem létrehozása
     table.appendChild(thead) //thead elem hozzáadása a table-hoz
@@ -111,7 +136,34 @@ function ketvalidalas(elsoelem, masodikelem, error) { //ketvalidalas() függvén
     return valid //a függvény a valid értékével tér vissza (true/false)
 }
 
-const form = document.getElementById('form') // form elem létrehozása
+function formGeneralas(){ //a formGeneralas függvény meghívása
+    const form = document.createElement('form') //a form elem létrehozása
+    form.id = 'form' //a form id-jának beállítása form-ra
+    form.action = '#' //a form action-ja '#'
+    document.body.appendChild(form) //a form hozzáadása a body-hoz
+
+    for(let i = 0; i < formtomb.length; i++){ //a formtomb bejárása
+        const div = document.createElement('div') //div elem létrehozása
+        form.appendChild(div) //a div elem hozzáadása a form-hoz
+        const label = document.createElement('label') //label elem létrehozása
+        label.innerHTML = formtomb[i].label //a label szövegének beállítása
+        div.appendChild(label) //a div hozzáadása a label-hez
+        const br = document.createElement('br') //br elem létrehozása
+        label.appendChild(br) // a be hozzáadása a label-hez
+        const input = document.createElement('input')//input elem létrehozása
+        input.type = 'text' //az input type 'text'
+        input.id = formtomb[i].id //az input id-jának beállítása
+        input.name = formtomb[i].id  //az input nevének beállítása(megegyezik az id-val)
+        div.appendChild(input) //az input hozzáadása a div-hez
+        const error = document.createElement('span') //span elem létrehozása és elraktározása az error változóban
+        error.className = 'error' //az error osztálya 'error'
+        div.appendChild(error) //az error hozzáadása a div-hez
+    }
+
+    const button = document.createElement('button') //button elem létrehozása
+    button.innerHTML = 'Hozzáadás' //a button szovegének megadása
+    form.appendChild(button) //a button hozzáadása a form-hoz
+}
 
 form.addEventListener('submit', function(e){ //a form submit eseménykezelő létrehozása
     e.preventDefault() // alapvető mód meggátolása
