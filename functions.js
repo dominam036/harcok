@@ -57,14 +57,18 @@ const formtomb = [ //a form tömbjének létrehozása
 
 formGeneralas() //a formGeneralas függvény meghívása
 
-function fejlecGeneralas(){
+/**
+ * a fejléc legenerálása
+ * @param {object} obj a fejléc elemeit tartalmazó objektum
+ */
+function fejlecGeneralas(obj){
     const thead = document.createElement('thead') //thead elem létrehozása
     table.appendChild(thead) //thead elem hozzáadása a table-hoz
     const tr = document.createElement('tr') //a tr elem létrehozása
     thead.appendChild(tr) //a sor hozzáadása a thead-hez
-    for (let i in array[0]) { //az array 0. elemének végigjárása
+    for (let i in obj) { //az array 0. elemének végigjárása
         const th = document.createElement('th')//th elem létrehozása
-        th.innerHTML = array[0][i] //th szövegének megadása az i értékével
+        th.innerHTML = obj[i] //th szövegének megadása az i értékével
         tr.appendChild(th) //th elem hozzáadása a tr-hez
     }
 }
@@ -72,9 +76,13 @@ function fejlecGeneralas(){
 const table = document.createElement("table");//table elem létrehozása
 document.body.appendChild(table);//table elem hozzáadása a document.body-hoz
 
+/**
+ * a table legenerálása
+ * @param {array} tomb a bejárandó tömb, melynek elemeit le szeretnénk generálni
+ */
 function RenderTable(tomb){ // a RenderTable függvény létrehozása
     
-    fejlecGeneralas();
+    fejlecGeneralas(array[0]);
 
     for (let i = 1; i < tomb.length; i++) { //for ciklus, ami végig megy a tomb-on
         const tbody = document.createElement('tbody') // létrehozzuk a tbody taget 
@@ -112,6 +120,12 @@ function RenderTable(tomb){ // a RenderTable függvény létrehozása
 
 RenderTable(array) //a RenderTable függvény meghívása
 
+/**
+ * egy elem validálása
+ * @param {HTMLElement} validelem a validálandó html elem
+ * @param {HTMLElement} error 
+ * @returns 
+ */
 function validalas(validelem, error){ //validalas() függvény létrehozása
     let valid = true //valid változóba bool elem rakása
     if(validelem.value === ""){ //a validelem értékének vizsgálata
@@ -125,6 +139,13 @@ function validalas(validelem, error){ //validalas() függvény létrehozása
     return valid //a függvény a valid értékével tér vissza (true/false)
 }
 
+/**
+ * két elem validálása
+ * @param {HTMLElement} elsoelem az első validálandó html elem
+ * @param {HTMLElement} masodikelem a második validálandó html elem
+ * @param {HTMLElement} error az error classal rendelkező html elem
+ * @returns visszaadja, hogy valid-e a két elem
+ */
 function ketvalidalas(elsoelem, masodikelem, error) { //ketvalidalas() függvény létrehozása
     let valid = true //valid változóba bool elem rakása
     if (elsoelem.value != "" && !validalas(masodikelem, error)) { //az elsoelem és a masodikelem validálásának vizsgálata
@@ -136,6 +157,9 @@ function ketvalidalas(elsoelem, masodikelem, error) { //ketvalidalas() függvén
     return valid //a függvény a valid értékével tér vissza (true/false)
 }
 
+/**
+ * a form legenerálása
+ */
 function formGeneralas(){ //a formGeneralas függvény meghívása
     const form = document.createElement('form') //a form elem létrehozása
     form.id = 'form' //a form id-jának beállítása form-ra
