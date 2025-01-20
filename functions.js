@@ -32,30 +32,24 @@ const array = [
     }
 ]
 
+function fejlecGeneralas(){
+    const thead = document.createElement('thead') //thead elem létrehozása
+    table.appendChild(thead) //thead elem hozzáadása a table-hoz
+    const tr = document.createElement('tr') //a tr elem létrehozása
+    thead.appendChild(tr) //a sor hozzáadása a thead-hez
+    for (let i in array[0]) { //az array 0. elemének végigjárása
+        const th = document.createElement('th')//th elem létrehozása
+        th.innerHTML = array[0][i] //th szövegének megadása az i értékével
+        tr.appendChild(th) //th elem hozzáadása a tr-hez
+    }
+}
+
 const table = document.createElement("table");//table elem létrehozása
 document.body.appendChild(table);//table elem hozzáadása a document.body-hoz
 
 function RenderTable(){ // a RenderTable függvény létrehozása
-    const thead = document.createElement("thead");//thead elem létrehozása
-    table.appendChild(thead);//thead elem hozzáadása a table-hoz
     
-    const h_row = document.createElement("tr");//row elem létrehozása és eltárolása a h_row változóban
-    thead.appendChild(h_row);//h_row elem hozzáadása a thead-hoz
-    
-    const th_hm = document.createElement("th");//th elem létrehozása és eltárolása a th_hm változóban
-    th_hm.innerHTML = array[0].thHm;//th_hm szövegének megadása a rowobjectum tulajdonságával
-    h_row.appendChild(th_hm);//th_hm elem hozzáadása a h_row-hoz
-    
-    const th_szf = document.createElement("th");//th elem létrehozása és eltárolása a th_szf változóban
-    th_szf.innerHTML = array[0].thSzf;//th_szf szövegének megadása a rowobjectum tulajdonságával
-    h_row.appendChild(th_szf);//th_szf elem hozzáadása a h_row-hoz
-    
-    const th_hr = document.createElement("th");//th elem létrehozása és eltárolása a th_hr változóban
-    th_hr.innerHTML = array[0].thHr;//th_hr szövegének megadása a rowobjectum tulajdonságával
-    h_row.appendChild(th_hr);//th_hr elem hozzáadása a h_row-hoz
-    
-    const tbody = document.createElement("tbody");//tbody elem létrehozása
-    table.appendChild(tbody);//tbody elem hozzáadása a table-hoz
+    fejlecGeneralas();
 
     for (let i = 1; i < array.length; i++) { //for ciklus, ami végig megy a array-on
         const tbody = document.createElement('tbody') // létrehozzuk a tbody taget 
