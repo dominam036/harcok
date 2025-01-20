@@ -47,14 +47,14 @@ function fejlecGeneralas(){
 const table = document.createElement("table");//table elem létrehozása
 document.body.appendChild(table);//table elem hozzáadása a document.body-hoz
 
-function RenderTable(){ // a RenderTable függvény létrehozása
+function RenderTable(tomb){ // a RenderTable függvény létrehozása
     
     fejlecGeneralas();
 
-    for (let i = 1; i < array.length; i++) { //for ciklus, ami végig megy a array-on
+    for (let i = 1; i < tomb.length; i++) { //for ciklus, ami végig megy a tomb-on
         const tbody = document.createElement('tbody') // létrehozzuk a tbody taget 
         table.appendChild(tbody) // a table-hez hozzáadjuk a tbodyt
-        const elem = array[i]; // kivesszük egy változóba a tömb aktuális elemét
+        const elem = tomb[i]; // kivesszük egy változóba a tömb aktuális elemét
         const tr = document.createElement('tr') //létrehozunk egy sort
         const tr2 = document.createElement('tr') //létrehozzuk a második sort
         tbody.appendChild(tr) //hozzáadjuk a tbodyhoz az első sort
@@ -85,7 +85,7 @@ function RenderTable(){ // a RenderTable függvény létrehozása
     }
 }
 
-RenderTable() //a RenderTable függvény meghívása
+RenderTable(array) //a RenderTable függvény meghívása
 
 function validalas(validelem, error){ //validalas() függvény létrehozása
     let valid = true //valid változóba bool elem rakása
@@ -174,6 +174,6 @@ form.addEventListener('submit', function(e){ //a form submit eseménykezelő lé
         }
         table.innerHTML = "" //a table törlése
 
-        RenderTable() //meghivom a RenderTable függvényt
+        RenderTable(array) //meghivom a RenderTable függvényt
     }
 })
