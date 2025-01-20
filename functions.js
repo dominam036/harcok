@@ -155,30 +155,29 @@ form.addEventListener('submit', function(e){ //a form submit eseménykezelő lé
         valid = false //a valid értékének false-ra állítása
     }
 
-    if (!ketmezovalidalas(harcolo2, hadero2, errorszoveg)) { //hadero2 és a harcolo2 validálásának eredményének vizsgálata
+    if (!ketvalidalas(harcolo2, hadero2, errorszoveg)) { //hadero2 és a harcolo2 validálásának eredményének vizsgálata
         valid = false //a valid értékének false-ra állítása
     }
     
     if(valid){ //Akkor megyünk be az elágazásba, ha a valid true
-        if(fel2V && hadero2V){ //ha van fel2V és hadero2V akkor megyunk be az elagazasba
-            const ujElem = {  //egy uj objektumot hozok létre
+        if(harcolo2_value && hadero2_value){ //harcolo2_value és hadero2_value értékének vizsgálata
+            const ujElem = {  //ujElem objectum létrehozása
                 tdHm:  harc_nev_value, //az objektum tdHm értéke a harc_nev_value
                 tdSzf: harcolo1_value, //az objektum tdSzf értéke a harcolo1_value
                 tdHr:  hadero1_value, //az objektum tdHr értéke a hadero1_value
                 tdSzf2: harcolo2_value, //az objektum tdSzf2 értéke a harcolo2_value
                 tdHr2: hadero2_value //az objektum tdHr2 értéke a hadero2_value
             }
-            tomb.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
+            array.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
         }
         else{
-            const ujElem = { //egy uj objektumot hozok létre 5 tulajdonsággal
+            const ujElem = { //ujElem objectum létrehozása 3 tulajdonsággal
                 tdHm:  harc_nev_value, //az objektum tdHm értéke a harc_nev_value
                 tdSzf: harcolo1_value, //az objektum tdSzf értéke a harcolo1_value
                 tdHr:  hadero1_value, //az objektum tdHr értéke a hadero1_value
             }
-            tomb.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
+            array.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
         }
-        array.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
         table.innerHTML = "" //a table törlése
 
         RenderTable() //meghivom a RenderTable függvényt
