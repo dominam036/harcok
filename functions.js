@@ -106,6 +106,16 @@ function validalas(validelem, error){ //validalas() függvény létrehozása
     return valid //a függvény a valid értékével tér vissza (true/false)
 }
 
+function ketvalidalas(elsoelem, masodikelem, error) { //ketvalidalas() függvény létrehozása
+    let valid = true //valid változóba bool elem rakása
+    if (elsoelem.value != "" && !validalas(masodikelem, error)) { //az elsoelem és a masodikelem validálásának vizsgálata
+        valid = false //a valid erteket falsera állitjuk
+    }
+    if (masodikelem.value != "" && !validalas(elsoelem, error)) { //a masodikelem és az elsoelem validálásának vizsgálata
+        valid = false //a valid erteket falsera állitjuk
+    }
+    return valid //a függvény a valid értékével tér vissza (true/false)
+}
 
 const form = document.getElementById('form') // form elem létrehozása
 
@@ -145,15 +155,29 @@ form.addEventListener('submit', function(e){ //a form submit eseménykezelő lé
         valid = false //a valid értékének false-ra állítása
     }
 
-    if(valid) {//ha a valid értéke true akkor megyünk be
-        const ujElem = {  //egy uj objektumot hozok létre
-            tdHm:  harc_nev_value, //az objektum tdHm értéke a harc_nev_value
-            tdSzf: harcolo1_value, //az objektum tdSzf értéke a harcolo1_value
-            tdHr:  hadero1_value, //az objektum tdHr értéke a hadero1_value
-            tdSzf2: harcolo2_value, //az objektum tdSzf2 értéke a harcolo2_value
-            tdHr2: hadero2_value //az objektum tdHr2 értéke a hadero2_value
+    if (!ketmezovalidalas(harcolo2, hadero2, errorszoveg)) { //hadero2 és a harcolo2 validálásának eredményének vizsgálata
+        valid = false //a valid értékének false-ra állítása
+    }
+    
+    if(valid){ //Akkor megyünk be az elágazásba, ha a valid true
+        if(fel2V && hadero2V){ //ha van fel2V és hadero2V akkor megyunk be az elagazasba
+            const ujElem = {  //egy uj objektumot hozok létre
+                tdHm:  harc_nev_value, //az objektum tdHm értéke a harc_nev_value
+                tdSzf: harcolo1_value, //az objektum tdSzf értéke a harcolo1_value
+                tdHr:  hadero1_value, //az objektum tdHr értéke a hadero1_value
+                tdSzf2: harcolo2_value, //az objektum tdSzf2 értéke a harcolo2_value
+                tdHr2: hadero2_value //az objektum tdHr2 értéke a hadero2_value
+            }
+            tomb.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
         }
-
+        else{
+            const ujElem = { //egy uj objektumot hozok létre 5 tulajdonsággal
+                tdHm:  harc_nev_value, //az objektum tdHm értéke a harc_nev_value
+                tdSzf: harcolo1_value, //az objektum tdSzf értéke a harcolo1_value
+                tdHr:  hadero1_value, //az objektum tdHr értéke a hadero1_value
+            }
+            tomb.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
+        }
         array.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
         table.innerHTML = "" //a table törlése
 
