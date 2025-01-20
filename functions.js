@@ -39,18 +39,18 @@ function RenderTable(){ // a RenderTable függvény létrehozása
     const thead = document.createElement("thead");//thead elem létrehozása
     table.appendChild(thead);//thead elem hozzáadása a table-hoz
     
-    const h_row = document.createElement("tr");//h_row elem létrehozása
+    const h_row = document.createElement("tr");//row elem létrehozása és eltárolása a h_row változóban
     thead.appendChild(h_row);//h_row elem hozzáadása a thead-hoz
     
-    const th_hm = document.createElement("th");//th_hm elem létrehozása
+    const th_hm = document.createElement("th");//th elem létrehozása és eltárolása a th_hm változóban
     th_hm.innerHTML = array[0].thHm;//th_hm szövegének megadása a rowobjectum tulajdonságával
     h_row.appendChild(th_hm);//th_hm elem hozzáadása a h_row-hoz
     
-    const th_szf = document.createElement("th");//th_szf elem létrehozása
+    const th_szf = document.createElement("th");//th elem létrehozása és eltárolása a th_szf változóban
     th_szf.innerHTML = array[0].thSzf;//th_szf szövegének megadása a rowobjectum tulajdonságával
     h_row.appendChild(th_szf);//th_szf elem hozzáadása a h_row-hoz
     
-    const th_hr = document.createElement("th");//th_hr elem létrehozása
+    const th_hr = document.createElement("th");//th elem létrehozása és eltárolása a th_hr változóban
     th_hr.innerHTML = array[0].thHr;//th_hr szövegének megadása a rowobjectum tulajdonságával
     h_row.appendChild(th_hr);//th_hr elem hozzáadása a h_row-hoz
     
@@ -66,25 +66,25 @@ function RenderTable(){ // a RenderTable függvény létrehozása
         tbody.appendChild(tr) //hozzáadjuk a tbodyhoz az első sort
         tbody.appendChild(tr2) //hozzáadjuk a tbodyhoz a második sort
     
-        const tdHm = document.createElement('td') //lértehozunk egy tdHm elemet
+        const tdHm = document.createElement('td') //lértehozunk egy td elemet és eltároljuk a tdHm változóban
         tdHm.innerHTML = elem.tdHm //beállitjuk a cella szövegét az aktuális elemnek
         tdHm.rowSpan = 2 //beállitjuk a tdHm cella rowspanjét 2-re
         tr.appendChild(tdHm) //hozzáadjuk a tdHm cellát az első sorhoz(tr)
     
-        const tdSzf = document.createElement('td') //lértehozunk egy tdSzf elemet
+        const tdSzf = document.createElement('td') //lértehozunk egy td elemet és eltároljuk a tdSzf változóban
         tdSzf.innerHTML = elem.tdSzf  //beállitjuk a cella szövegét az aktuális elemnek
         tr.appendChild(tdSzf) //hozzáadjuk a tdSzf cellát az első sorhoz(tr)
     
-        const tdHr = document.createElement('td') //lértehozunk egy tdHr elemet
+        const tdHr = document.createElement('td') //lértehozunk egy td elemet és eltároljuk a tdHr változóban
         tdHr.innerHTML = elem.tdHr  //beállitjuk a cella szövegét az aktuális elemnek
         tr.appendChild(tdHr) //hozzáadjuk a tdHr cellát az első sorhoz(tr)
     
         if(elem.tdSzf2 || elem.tdHr2){ // Ebbe az elágazásba ellenőrizzük, hogy az elemnek van-e tdSzf2, és tdHr2 tulajdonsága
-            const tdSzf2 = document.createElement('td') //lértehozunk egy tdSzf2 elemet
+            const tdSzf2 = document.createElement('td') //lértehozunk egy td elemet és eltároljuk a tdSzf2 változóban
             tdSzf2.innerHTML = elem.tdSzf2  //beállitjuk a cella szövegét az aktuális elemnek
             tr2.appendChild(tdSzf2) //hozzáadjuk a tdSzf2 cellát az első sorhoz(tr2)
     
-            const tdHr2 = document.createElement('td') //lértehozunk egy tdHr2 elemet
+            const tdHr2 = document.createElement('td') //lértehozunk egy td elemet és eltároljuk a tdHr2 változóban
             tdHr2.innerHTML = elem.tdHr2  //beállitjuk a cella szövegét az aktuális el
             tr2.appendChild(tdHr2) //hozzáadjuk a tdHr2 cellát az első sorhoz(tr2)
         }
@@ -92,6 +92,20 @@ function RenderTable(){ // a RenderTable függvény létrehozása
 }
 
 RenderTable() //a RenderTable függvény meghívása
+
+function validalas(validelem, error){ //validalas() függvény létrehozása
+    let valid = true //valid változóba bool elem rakása
+    if(validelem.value === ""){ //a validelem értékének vizsgálata
+        const parent = validelem.parentElement //a validelem parentelement-jének változóba rakása
+        const errorhelye = parent.querySelector(".error") //a parent-hez tartozó "error" class-sal rendelkező elem lekérése
+        if(errorhelye != ""){ //az errorhelye értékének vizsgálata hogy nem üres-e
+            errorhelye.innerHTML = error //az errorhelye-nek a szövegének beállítása a 2. paraméterre(error)
+        }
+        valid = false //a valid értéket false-ra állítjuk
+    }
+    return valid //a függvény a valid értékével tér vissza (true/false)
+}
+
 
 const form = document.getElementById('form') // form elem létrehozása
 
@@ -109,16 +123,40 @@ form.addEventListener('submit', function(e){ //a form submit eseménykezelő lé
     const harcolo2_value = harcolo2.value //a harcolo2 értékét kiveszem egy harcolo2_value változóba
     const hadero2_value = hadero2.value //a hadero2 értékét kiveszem egy hadero2_value változóba
 
-    const ujElem =  {  //egy uj objektumot hozok létre
-        tdHm:  harc_nev_value, //az objektum tdHm értéke a harc_nev_value
-        tdSzf: harcolo1_value, //az objektum tdSzf értéke a harcolo1_value
-        tdHr:  hadero1_value, //az objektum tdHr értéke a hadero1_value
-        tdSzf2: harcolo2_value, //az objektum tdSzf2 értéke a harcolo2_value
-        tdHr2: hadero2_value //az objektum tdHr2 értéke a hadero2_value
+    const aktualis = e.currentTarget //az aktualis hely
+    const errorok = aktualis.querySelectorAll('.error') //az error class-sal rendelkező elemeket kiválasztjuk
+    const errorszoveg = "A mező kitöltés kötelező!"  //az errorszoveg létrehozása, mely megadja a validálásnál használt szöveget
+
+    for(const error of errorok){ //egy error vegigmegy az errorokon és mindegyiket ""-re állítja
+        error.innerHTML = ""
     }
 
-    array.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
-    table.innerHTML = "" //a table törlése
+    let valid = true // a valid értékének true-ra állítása
 
-    RenderTable() //meghivom a RenderTable függvényt
+    if(!validalas(harc_nev, errorszoveg)){ //harc_nev validálásának eredményének vizsgálata
+        valid = false //a valid értékének false-ra állítása
+    }
+
+    if(!validalas(harcolo1, errorszoveg)){ //harcolo1 validálásának eredményének vizsgálata
+        valid = false //a valid értékének false-ra állítása
+    }
+
+    if(!validalas(hadero1, errorszoveg)){ //hadero1 validálásának eredményének vizsgálata
+        valid = false //a valid értékének false-ra állítása
+    }
+
+    if(valid) {//ha a valid értéke true akkor megyünk be
+        const ujElem = {  //egy uj objektumot hozok létre
+            tdHm:  harc_nev_value, //az objektum tdHm értéke a harc_nev_value
+            tdSzf: harcolo1_value, //az objektum tdSzf értéke a harcolo1_value
+            tdHr:  hadero1_value, //az objektum tdHr értéke a hadero1_value
+            tdSzf2: harcolo2_value, //az objektum tdSzf2 értéke a harcolo2_value
+            tdHr2: hadero2_value //az objektum tdHr2 értéke a hadero2_value
+        }
+
+        array.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
+        table.innerHTML = "" //a table törlése
+
+        RenderTable() //meghivom a RenderTable függvényt
+    }
 })
