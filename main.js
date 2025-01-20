@@ -60,7 +60,7 @@ formGeneralas() //a formGeneralas függvény meghívása
 const table = document.createElement("table");//table elem létrehozása
 document.body.appendChild(table);//table elem hozzáadása a document.body-hoz
 
-RenderTable(array) //a RenderTable függvény meghívása
+RenderTable(array, table) //a RenderTable függvény meghívása
 
 form.addEventListener('submit', function(e){ //a form submit eseménykezelő létrehozása
     e.preventDefault() // alapvető mód meggátolása
@@ -123,6 +123,6 @@ form.addEventListener('submit', function(e){ //a form submit eseménykezelő lé
         }
         table.innerHTML = "" //a table törlése
 
-        RenderTable(array) //meghivom a RenderTable függvényt
+        RenderTable(array, table) //meghivom a RenderTable függvényt
     }
 })

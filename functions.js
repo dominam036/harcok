@@ -1,8 +1,9 @@
 /**
  * a fejléc legenerálása
  * @param {object} obj a fejléc elemeit tartalmazó objektum
+ * @param {HTMLElement} table a táblázat amibe be kéne illeszteni a fejlécet
  */
-function fejlecGeneralas(obj){
+function fejlecGeneralas(obj, table){
     const thead = document.createElement('thead') //thead elem létrehozása
     table.appendChild(thead) //thead elem hozzáadása a table-hoz
     const tr = document.createElement('tr') //a tr elem létrehozása
@@ -18,9 +19,9 @@ function fejlecGeneralas(obj){
  * a table legenerálása
  * @param {array} tomb a bejárandó tömb, melynek elemeit le szeretnénk generálni
  */
-function RenderTable(tomb){ // a RenderTable függvény létrehozása
+function RenderTable(tomb, table){ // a RenderTable függvény létrehozása
     
-    fejlecGeneralas(array[0]);
+    fejlecGeneralas(array[0], table);
 
     for (let i = 1; i < tomb.length; i++) { //for ciklus, ami végig megy a tomb-on
         const tbody = document.createElement('tbody') // létrehozzuk a tbody taget 
@@ -59,7 +60,7 @@ function RenderTable(tomb){ // a RenderTable függvény létrehozása
 /**
  * egy elem validálása
  * @param {HTMLElement} validelem a validálandó html elem
- * @param {HTMLElement} error 
+ * @param {string} error az error szöveggel rendelkező változó
  * @returns 
  */
 function validalas(validelem, error){ //validalas() függvény létrehozása
@@ -79,7 +80,7 @@ function validalas(validelem, error){ //validalas() függvény létrehozása
  * két elem validálása
  * @param {HTMLElement} elsoelem az első validálandó html elem
  * @param {HTMLElement} masodikelem a második validálandó html elem
- * @param {HTMLElement} error az error classal rendelkező html elem
+ * @param {string} error az error szöveggel rendelkező változó
  * @returns visszaadja, hogy valid-e a két elem
  */
 function ketvalidalas(elsoelem, masodikelem, error) { //ketvalidalas() függvény létrehozása
@@ -123,4 +124,5 @@ function formGeneralas(){ //a formGeneralas függvény meghívása
     const button = document.createElement('button') //button elem létrehozása
     button.innerHTML = 'Hozzáadás' //a button szovegének megadása
     form.appendChild(button) //a button hozzáadása a form-hoz
+    return form;
 }
